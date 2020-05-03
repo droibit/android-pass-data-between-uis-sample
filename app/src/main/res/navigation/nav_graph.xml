@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.github.droibit.sample.pass_data.MainFragment"
+        android:label="Main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/toDetail"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/toConfirmation"
+            app:destination="@id/confirmationDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.github.droibit.sample.pass_data.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail" />
+
+    <dialog
+        android:id="@+id/confirmationDialogFragment"
+        android:name="com.github.droibit.sample.pass_data.ConfirmationDialogFragment" />
+
+</navigation>
