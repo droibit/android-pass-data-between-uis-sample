@@ -5,6 +5,7 @@ import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class MainFragment : Fragment() {
 
     private val startOtherForResult = registerForActivityResult(StartOtherForResult()) { result ->
         val message = result?.message ?: "Canceled"
+        Log.d(BuildConfig.BUILD_TYPE, message)
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
@@ -35,6 +37,7 @@ class MainFragment : Fragment() {
         } else {
             "Camera permission denied"
         }
+        Log.d(BuildConfig.BUILD_TYPE, message)
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
@@ -61,7 +64,9 @@ class MainFragment : Fragment() {
                 BUTTON_NEGATIVE -> getString(android.R.string.cancel)
                 else -> "Unknown(${result.button})"
             }
-            Toast.makeText(requireContext(), "Selected: $selectedButton", Toast.LENGTH_SHORT).show()
+            val message = "Selected: $selectedButton"
+            Log.d(BuildConfig.BUILD_TYPE, message)
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
     }
 
